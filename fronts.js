@@ -6,28 +6,45 @@ class Node {
 }
 
 class LinkedList {
-  constuctor(){
-    this.head = null;
+  constuctor(head = null){
+    this.head = head;
   }
 
   
-  addFront(val){
+  addFront(new_node){
     
-    let new_node = new Node(val);
-    if(!this.head){
-      this.head = new_node;
-      return this;
-    }
     new_node.next = this.head;
 
     this.head = new_node;
-
-    return this;
-
     
   }
 
   removeFront(){
-    
+
+    if (this.head == null){
+      return null
+    }
+    let removedNode = this.head;
+
+    this.head = this.head.next
+    removedNode.next = null;
+
+    return removedNode;
+  }
+
+  front(){
+    let index = this.head
+    console.log(index.data)
   }
 }
+  const firstSll = new LinkedList();
+  firstSll.addFront(new Node(5))
+  console.log(firstSll);
+  firstSll.addFront(new Node(10))
+  console.log(firstSll.front());
+  console.log(firstSll);
+  firstSll.removeFront()
+  console.log(firstSll);
+
+  console.log(firstSll.front());
+
